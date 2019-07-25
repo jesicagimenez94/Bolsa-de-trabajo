@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@CSS/DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.ControllerMenuPrincipal">
+   <children>
+      <Label layoutX="176.0" layoutY="70.0" styleClass="label-header" text="Menu Principal" textAlignment="CENTER">
+         <font>
+            <Font size="42.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label layoutX="189.0" layoutY="240.0" onMouseClicked="#Registrarse" prefHeight="39.0" prefWidth="322.0" styleClass="label-b" text="Registro e Inicio de Sesion">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Accordion />
+   </children>
+</AnchorPane>
