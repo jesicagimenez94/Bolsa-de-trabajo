@@ -30,26 +30,41 @@
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
+                                 <effect>
+                                    <Bloom />
+                                 </effect>
                               </Label>
                               <Label styleClass="label-formulario" text="Actualizar Datos">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
+                                 <effect>
+                                    <Bloom />
+                                 </effect>
                               </Label>
                               <Label styleClass="label-formulario" text="Mi Curriculum">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
+                                 <effect>
+                                    <Bloom />
+                                 </effect>
                               </Label>
                               <Label styleClass="label-formulario" text="Propuestas">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
+                                 <effect>
+                                    <Bloom />
+                                 </effect>
                               </Label>
                               <Label layoutX="20.0" layoutY="227.0" styleClass="label-formulario" text="Cerrar Sesion">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
+                                 <effect>
+                                    <Bloom />
+                                 </effect>
                               </Label>
                            </children>
                         </VBox>

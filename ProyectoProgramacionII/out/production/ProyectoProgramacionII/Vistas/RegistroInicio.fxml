@@ -13,6 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@CSS/DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.ControllerRegistroInicio">
    <children>
@@ -42,6 +43,9 @@
                            <padding>
                               <Insets top="3.0" />
                            </padding>
+                           <font>
+                              <Font name="System Italic" size="9.0" />
+                           </font>
                         </TextField>
                         <Label text="Contraseña">
                            <VBox.margin>

@@ -4,5 +4,5 @@ module ProyectoProgramacionII {
     requires  java.sql;
     requires javafx.swing;
     requires  javafx.base;
-    opens Vistas;
+    opens Vistas ;
 }
