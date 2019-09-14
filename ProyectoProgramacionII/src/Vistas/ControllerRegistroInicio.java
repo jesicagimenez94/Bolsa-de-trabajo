@@ -46,6 +46,7 @@ public class ControllerRegistroInicio  {
     public void inicioSesion(javafx.scene.input.MouseEvent mouseEvent) {
         Registros reg= new Registros();
         Mensajes met= new Mensajes();
+        MostrarVistas m = new MostrarVistas();
 
         if((!txtUser.getText().equals(""))&&(!txtPass.getText().equals(""))){ //en caso que usuario y contraseña sean distinto a campo vacio
 
@@ -53,7 +54,7 @@ public class ControllerRegistroInicio  {
             reg.setUsuario(txtUser.getText());
             reg.setContrasenia(nuevoPas);
             if ((txtPass.getText().length()>=6 )&&(txtPass.getText().length()<=8 )){ //cantidad min de caracteres 6 y maxima 8
-                if(reg.login(reg)){//si devuelve true el metodo login inicia sesion
+              if(reg.login(reg) ){//si devuelve true el metodo login inicia sesion
 
 
                 }else{
@@ -70,8 +71,6 @@ public class ControllerRegistroInicio  {
 
     public void initialize() {
 
-        tipoUsuario.setValue("---");
-        tipoUsuario.setItems(ListaTipo);
 
     }
 
@@ -87,7 +86,6 @@ public class ControllerRegistroInicio  {
         txtRepetirContrasenia.setText("");
         txtContrasenia.setText("");
         txtUsuario.setText("");
-        tipoUsuario.setSelectionModel(null);
 
     }
 
@@ -95,7 +93,7 @@ public class ControllerRegistroInicio  {
 
     @FXML
     public void registrar(MouseEvent mouseEvent) throws IOException {
-        if (txtUsuario.getText().equals("") || txtContrasenia.getText().equals("") || txtRepetirContrasenia.getText().equals("")||tipoUsuario.getSelectionModel().getSelectedItem().equals("---")) {//comprueba si hay campos vacios
+        if (txtUsuario.getText().equals("") || txtContrasenia.getText().equals("") || txtRepetirContrasenia.getText().equals("")) {//comprueba si hay campos vacios
             met.MensajeError("Hay campos vacios");
         } else {//si no hay campos vacios pasa a la siguiente validacion
 
@@ -108,12 +106,6 @@ public class ControllerRegistroInicio  {
                         reg.setUsuario(txtUsuario.getText());
                         reg.setContrasenia(nuevoPass);
 
-                        String opcion = (String) tipoUsuario.getSelectionModel().getSelectedItem();//si tipo de usuario es igual alumno retorna 1 en otro caso 2
-                        if (opcion.equalsIgnoreCase("Alumno")) {
-                            reg.setId_tipoUsuario(1);
-                        } else {
-                            reg.setId_tipoUsuario(2);
-                        }
 
                         if (reg.Registrar(reg)){
                             limpiar();

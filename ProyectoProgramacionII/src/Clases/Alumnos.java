@@ -2,7 +2,10 @@ package Clases;
 
 import Conexion.Conectar;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Alumnos {
     int id_alumnos;
@@ -129,4 +132,35 @@ public class Alumnos {
         }
 
     }
-}
+
+    public List<Alumnos> ListarCurriculum() {//metodo que devuelve la lista de los curriculums
+        Conectar con = new Conectar();
+        List<Alumnos> listaAlum = new ArrayList<Alumnos>();
+        String sql = "SELECT nombre,apellido,mail,dni,archivo_cv,mensaje FROM alumnos";
+        PreparedStatement ps =null;
+        ResultSet rs =null;
+
+        try {
+            ps = con.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Alumnos alu= new Alumnos();
+                alu.setNombre(rs.getString("nombre"));
+                alu.setApellido(rs.getString("apellido"));
+                alu.setMail(rs.getString("mail"));
+                alu.setDni(rs.getString("dni"));
+                        alu.setArchivo_cv(rs.getBytes("archivo_cv"));
+                        alu.setMensaje(rs.getString("mensaje"));
+
+                        listaAlum.add(alu);
+                        }
+                        } catch (SQLException ex) {
+                        System.out.println(ex.getMessage());
+                        System.out.println("aca1");
+                        } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        System.out.println("aca2");
+                        }
+                        return listaAlum;
+                        }
+                        }

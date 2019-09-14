@@ -1,85 +1,124 @@
 package Clases;
 
 import Conexion.Conectar;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 
 public class Empresas {
-    int id_empresas;
-    String nombre_empresa,puesto,industria,area,sector,detalle;
+    private final SimpleIntegerProperty id_empresas   ;
+
+    private final  SimpleStringProperty Nombre_empresa;
+    private final SimpleStringProperty Puesto;
+    private final SimpleStringProperty Area;
+    private final SimpleStringProperty Sector;
+    private final SimpleStringProperty Detalle;
+    private final SimpleStringProperty Industria;
+
+//    private  Date fecha;
 
 
-    Date fecha;
+    public Empresas()
+    {
+        this.Nombre_empresa= new SimpleStringProperty("");
+        this.Sector= new SimpleStringProperty("");
+        this.Area= new SimpleStringProperty("");
+        this.Detalle= new SimpleStringProperty("");
+        this.Industria= new SimpleStringProperty("");
+        this.id_empresas = new SimpleIntegerProperty(0);
+        this.Puesto= new SimpleStringProperty("");
+    }
 
-    public int getId_empresas() {
+    public Empresas(int id_empresas,String nombre_empresa, String puesto, String area, String sector, String detalle, String industria) {
+        this.id_empresas =  new SimpleIntegerProperty (id_empresas);
+        this.Nombre_empresa = new SimpleStringProperty(nombre_empresa);
+        this.Puesto = new SimpleStringProperty(puesto);
+        this.Area = new SimpleStringProperty(area);
+       this.Sector = new SimpleStringProperty(sector);
+        this.Detalle = new SimpleStringProperty( detalle);
+        this.Industria = new SimpleStringProperty(industria);
+    }
+
+    public SimpleIntegerProperty getId_empresas() {
         return id_empresas;
     }
 
     public void setId_empresas(int id_empresas) {
-        this.id_empresas = id_empresas;
+        this.id_empresas.set(id_empresas);
     }
+
 
     public String getNombre_empresa() {
-        return nombre_empresa;
+        return Nombre_empresa.get();
     }
 
-    public void setNombre_empresa(String nombre_empresa) {
-        this.nombre_empresa = nombre_empresa;
+
+    public void setNombre_empresa(String xnombre_empresa) {
+        Nombre_empresa.set(xnombre_empresa);
     }
 
     public String getPuesto() {
-        return puesto;
+        return Puesto.get();
     }
 
-    public void setPuesto(String puesto) {
-        this.puesto = puesto;
-    }
-
-    public String getIndustria() {
-        return industria;
-    }
-
-    public void setIndustria(String industria) {
-        this.industria = industria;
+    public void setPuesto(String zpuesto) {
+        Puesto.set(zpuesto);
     }
 
     public String getArea() {
-        return area;
+        return Area.get();
+    }
+
+    public SimpleStringProperty areaProperty() {
+        return Area;
     }
 
     public void setArea(String area) {
-        this.area = area;
+        this.Area.set(area);
     }
 
     public String getSector() {
-        return sector;
+        return Sector.get();
     }
 
+
+
     public void setSector(String sector) {
-        this.sector = sector;
+        this.Sector.set(sector);
     }
 
     public String getDetalle() {
-        return detalle;
+        return Detalle.get();
     }
+
 
     public void setDetalle(String detalle) {
-        this.detalle = detalle;
+        this.Detalle.set(detalle);
     }
 
-    public Date getFecha() {
+    public String getIndustria() {
+        return Industria.get();
+    }
+
+
+    public void setIndustria(String industria) {
+        this.Industria.set(industria);
+    }
+
+  /*  public Date getFecha() {
         return fecha;
     }
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
+*/
 
 
 
@@ -88,7 +127,7 @@ public class Empresas {
 
 
         Conectar con= new Conectar();
-        String sql="INSERT INTO empresas(nombre_empresa,puesto,industria,area,sector,detalle,fecha)VALUES(?,?,?,?,?,?,?)";
+        String sql="INSERT INTO empresas(nombre_empresa,puesto,industria,area,sector,detalle)VALUES(?,?,?,?,?,?)";
         PreparedStatement ps=null;
 
         try{
@@ -99,7 +138,7 @@ public class Empresas {
             ps.setString(4,empresas.getArea());
             ps.setString(5, empresas.getSector());
             ps.setString(6,empresas.getDetalle());
-            ps.setDate(7, (java.sql.Date)empresas.getFecha());
+  //          ps.setDate(7, (java.sql.Date)empresas.getFecha());
             ps.executeUpdate();
 
         }catch (SQLException e){
@@ -117,37 +156,34 @@ public class Empresas {
 
 
 
-    public ArrayList<Empresas> ListarPropuestas() {//metodo que devuelve la lista de las propuestas
-        ArrayList<Empresas> listaEmp = new ArrayList<Empresas>();
-        Conectar conec = new Conectar();
-        String sql = "SELECT nombre_empresa,puesto,industria,area,sector,detalle FROM empresas";
-        ResultSet rs = null;
-        PreparedStatement ps = null;
+    public List<Empresas> ListarPropuestas() {//metodo que devuelve la lista de las propuestas
+        Conectar con = new Conectar();
+        List<Empresas> listaEmp = new ArrayList<Empresas>();
+        String sql = "SELECT nombre_empresa,puesto,industria,sector,detalle,area FROM empresas";
+        PreparedStatement ps =null;
+        ResultSet rs =null;
+
         try {
-            ps = conec.getConnection().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Empresas emp = new Empresas();
-                emp.setNombre_empresa(rs.getString(1));
-                emp.setPuesto(rs.getString(2));
-                emp.setIndustria(rs.getString(3));
-                emp.setArea(rs.getString(4));
-                emp.setSector(rs.getString(5));
-                emp.setDetalle(rs.getString(6));
+
+                Empresas emp= new Empresas();
+                emp.setNombre_empresa(rs.getString("Nombre_empresa"));
+                emp.setPuesto(rs.getString("Puesto"));
+                emp.setIndustria(rs.getString("Industria"));
+                emp.setArea(rs.getString("Sector"));
+                emp.setSector(rs.getString("Detalle"));
+                emp.setDetalle(rs.getString("Area"));
 
                 listaEmp.add(emp);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            System.out.println("aca1");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        } finally {
-            try {
-                ps.close();
-                rs.close();
-                conec.desconectar();
-            } catch (Exception ex) {
-            }
+            System.out.println("aca2");
         }
         return listaEmp;
     }

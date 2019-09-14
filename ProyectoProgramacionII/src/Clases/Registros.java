@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.*;
 
 
@@ -80,7 +82,7 @@ public class Registros extends Conectar {
         PreparedStatement ps=null;
         Connection con = getConnection();
 
-        String sql="INSERT INTO registros (usuario,contrasenia,repetirContrasenia,id_tipoUsuario)VALUES(?,?,?,?)";
+        String sql="INSERT INTO usuarios (usuario,contrasenia,repetirContrasenia,id_tipoUsuario)VALUES(?,?,?,?)";
         try {
             ps=con.prepareStatement(sql);
             ps.setString(1, user.getUsuario());
@@ -106,7 +108,7 @@ public class Registros extends Conectar {
         ResultSet rs= null;
         Connection con = getConnection();
 
-        String sql="SELECT id_registros,usuario,contrasenia,id_tipousuario FROM registros WHERE usuario=?";//primero vemos si el usuario existe
+        String sql="SELECT id_registros,usuario,contrasenia,id_tipousuario FROM usuarios WHERE usuario=?";//primero vemos si el usuario existe
         try {
 
             MostrarVistas m= new MostrarVistas();
@@ -117,13 +119,12 @@ public class Registros extends Conectar {
             if(rs.next()){
                 if(user.getContrasenia().equals(rs.getString(3))){//en caso que las contraseñas coincidan
                     user.setId_registros(1);
+                    if( user.getUsuario().equalsIgnoreCase("admin123")){
+                        m.mostrarVistaEmpresas();}
+                     else{
+                        m.mostrarVistaMenuAlumnos(); }
+                    }
 
-                    if(rs.getInt(4)==1){ //muestra ventana menu alumnos
-                        m.mostrarVistaMenuAlumnos();
-                    }
-                    else if(rs.getInt(4)==2){
-                        m.mostrarVistaEmpresas();
-                    }
                     //devuelve true solo cuando contraseña existe
 
                     return true;
@@ -137,8 +138,6 @@ public class Registros extends Conectar {
 
                 }
 
-            }
-            return false;
         } catch (SQLException ex) {
             System.out.println(ex);
             return false;
@@ -152,7 +151,7 @@ public class Registros extends Conectar {
         ResultSet rs= null;
         Connection con = getConnection();
 
-        String sql="SELECT count(id_registros)FROM registros WHERE usuario=?";
+        String sql="SELECT count(id_registros)FROM usuarios WHERE usuario=?";
         try {
             ps=con.prepareStatement(sql);
             ps.setString(1, user1);
@@ -168,6 +167,32 @@ public class Registros extends Conectar {
             return 1;
         }
 
+    }
+
+    public List<Registros> ListarUsuarios() {//metodo que devuelve la lista de los usuarios
+        Conectar con = new Conectar();
+        List<Registros> listaReg = new ArrayList<Registros>();
+        String sql = "SELECT usuario FROM usuarios";
+        PreparedStatement ps =null;
+        ResultSet rs =null;
+
+        try {
+            ps = con.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Registros reg= new Registros();
+                reg.setUsuario(rs.getString("usuario"));
+
+                listaReg.add(reg);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("aca1");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("aca2");
+        }
+        return listaReg;
     }
 
 

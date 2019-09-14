@@ -9,20 +9,13 @@ import java.sql.SQLException;
 
 public class Conectar {
 
-    static String bd="bolsalaboral";
+    static String bd="bolsadetrabajo";
     static String login="root";
     static  String password="";
     static String url="jdbc:mysql://localhost/"+bd;
 
     Connection connection=null;
 
-    public void conexionExitosa(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("conexion");
-        alert.setHeaderText(null);
-        alert.setContentText("Su conexion a sido exitosa!");
-        alert.showAndWait();
-    }
 
     public Conectar(){
 

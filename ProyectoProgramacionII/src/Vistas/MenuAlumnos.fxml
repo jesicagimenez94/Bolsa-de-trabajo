@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -18,15 +17,15 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@CSS/DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.ControllerMenuAlumnos">
    <children>
-      <TabPane prefHeight="506.0" prefWidth="744.0" styleClass="TabPane" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="Alumnos" prefHeight="506.0" prefWidth="900.0" styleClass="TabPane" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Menu">
+          <Tab fx:id="PestaniaMenu" text="Menu">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane fx:id="Menu" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox layoutX="1.0" layoutY="1.0" prefHeight="434.0" prefWidth="275.0">
+                        <VBox layoutY="1.0" prefHeight="434.0" prefWidth="275.0">
                            <children>
-                              <Label styleClass="label-formulario" text="Cargar Curriculum">
+                              <Label fx:id="MenuCargar" onMouseClicked="#cargar" styleClass="label-formulario" text="Cargar Curriculum">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
@@ -34,7 +33,7 @@
                                     <Bloom />
                                  </effect>
                               </Label>
-                              <Label styleClass="label-formulario" text="Actualizar Datos">
+                              <Label fx:id="MenuActualizar" onMouseClicked="#Actualizar" styleClass="label-formulario" text="Actualizar Datos">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
@@ -42,7 +41,7 @@
                                     <Bloom />
                                  </effect>
                               </Label>
-                              <Label styleClass="label-formulario" text="Mi Curriculum">
+                              <Label fx:id="MenuCurriculum" onMouseClicked="#VistaCurriculum" styleClass="label-formulario" text="Mi Curriculum">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
@@ -50,7 +49,7 @@
                                     <Bloom />
                                  </effect>
                               </Label>
-                              <Label styleClass="label-formulario" text="Propuestas">
+                              <Label fx:id="Propuestas" onMouseClicked="#VerPropuestas" styleClass="label-formulario" text="Propuestas">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
@@ -58,7 +57,7 @@
                                     <Bloom />
                                  </effect>
                               </Label>
-                              <Label layoutX="20.0" layoutY="227.0" styleClass="label-formulario" text="Cerrar Sesion">
+                              <Label fx:id="CerrarSesion" layoutX="20.0" layoutY="227.0" onMouseClicked="#Cerrar" styleClass="label-formulario" text="Cerrar Sesion">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="25.0" />
                                  </VBox.margin>
@@ -69,7 +68,7 @@
                            </children>
                         </VBox>
                         <Separator layoutX="276.0" layoutY="1.0" orientation="VERTICAL" prefHeight="440.0" prefWidth="11.0" />
-                        <ImageView fitHeight="428.0" fitWidth="474.0" layoutX="292.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imagenAlumno" fitHeight="428.0" fitWidth="474.0" layoutX="292.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Imagenes/alumno.png" />
                            </image>
@@ -78,9 +77,9 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Cargar Curriculum">
+            <Tab fx:id="PestaniaCargar" text="Cargar Curriculum">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane fx:id="a1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <VBox layoutX="-1.0" prefHeight="447.0" prefWidth="371.0">
                            <children>
@@ -100,7 +99,7 @@
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField prefHeight="32.0" prefWidth="92.0" styleClass="button">
+                              <TextField fx:id="txtNombre" prefHeight="32.0" prefWidth="92.0" styleClass="button">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
@@ -113,7 +112,7 @@
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField styleClass="button">
+                              <TextField fx:id="txtApellido" styleClass="button">
                                  <padding>
                                     <Insets top="3.0" />
                                  </padding>
@@ -126,7 +125,7 @@
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField styleClass="button">
+                              <TextField fx:id="txtDni" styleClass="button">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
@@ -136,26 +135,26 @@
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField styleClass="button">
+                              <TextField fx:id="txtMail" styleClass="button">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </TextField>
                            </children>
                         </VBox>
-                        <VBox layoutX="377.0" layoutY="-6.0" prefHeight="448.0" prefWidth="358.0">
+                        <VBox fx:id="a2" layoutX="377.0" layoutY="-6.0" prefHeight="448.0" prefWidth="358.0">
                            <children>
                               <Label text="Curriculum">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="80.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField prefHeight="33.0" prefWidth="247.0" styleClass="button">
+                              <TextField fx:id="txtCurriculum" onMouseClicked="#seleccionar" prefHeight="33.0" prefWidth="247.0" styleClass="button">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="365.0" text="Seleccionar Archivo">
+                              <Button fx:id="btnSeleccionarArchivo" mnemonicParsing="false" onMouseClicked="#seleccionarArchivo" prefHeight="38.0" prefWidth="365.0" text="Seleccionar Archivo">
                                  <padding>
                                     <Insets top="3.0" />
                                  </padding>
@@ -168,17 +167,22 @@
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextArea prefHeight="128.0" prefWidth="329.0" styleClass="button">
+                              <TextArea fx:id="txtMensaje" prefHeight="128.0" prefWidth="329.0" styleClass="button">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </TextArea>
-                              <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="102.0" text="Guardar">
+                              <Button fx:id="btnVolver" mnemonicParsing="false" onMouseClicked="#volver" prefHeight="33.0" prefWidth="93.0" text="Volver">
+                                 <VBox.margin>
+                                    <Insets left="255.0" right="10.0" top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="btnGuardar" mnemonicParsing="false" onMouseClicked="#guardar" prefHeight="38.0" prefWidth="102.0" text="Guardar">
                                  <padding>
                                     <Insets top="3.0" />
                                  </padding>
                                  <VBox.margin>
-                                    <Insets left="250.0" right="10.0" top="5.0" />
+                                    <Insets left="255.0" right="10.0" top="4.0" />
                                  </VBox.margin>
                               </Button>
                            </children>
@@ -187,38 +191,35 @@
                   </AnchorPane>
                </content>
             </Tab>
-          <Tab text="Mi Curriculum">
+          <Tab fx:id="PestaniaMiCv" text="Mi Curriculum">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane fx:id="b1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="282.0" layoutY="35.0" styleClass="label-formulario" text="Mi Curriculum">
+                        <Label layoutX="368.0" layoutY="30.0" styleClass="label-formulario" text="Mi Curriculum">
                            <effect>
                               <Bloom />
                            </effect>
                         </Label>
+                        <Button fx:id="btnVolver1" layoutX="14.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#volver" prefHeight="33.0" prefWidth="93.0" text="Volver" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Propuestas">
+            <Tab fx:id="PestaniaPropuestas" text="Propuestas">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane fx:id="c1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="234.0" layoutY="27.0" styleClass="label-formulario" text="Empleos Disponibles">
+                        <Label layoutX="330.0" layoutY="27.0" styleClass="label-formulario" text="Empleos Disponibles">
                            <effect>
                               <Bloom />
                            </effect>
                         </Label>
-                        <TableView layoutX="-1.0" layoutY="95.0" prefHeight="345.0" prefWidth="731.0">
+                        <TableView fx:id="table" layoutX="-1.0" layoutY="95.0" prefHeight="251.0" prefWidth="892.0">
                           <columns>
-                            <TableColumn prefWidth="138.0" text="Empresa" />
-                            <TableColumn minWidth="1.0" prefWidth="105.0" text="Puesto" />
-                              <TableColumn minWidth="1.0" prefWidth="121.0" text="Industria" />
-                              <TableColumn minWidth="1.0" prefWidth="89.0" text="Area" />
-                              <TableColumn minWidth="1.0" prefWidth="105.0" text="Sector" />
-                              <TableColumn minWidth="1.0" prefWidth="105.0" text="Detalle" />
+
                           </columns>
                         </TableView>
+                        <Button fx:id="btnVolver2" layoutX="24.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#volver" prefHeight="33.0" prefWidth="80.0" text="Volver" />
                      </children>
                   </AnchorPane>
                </content>

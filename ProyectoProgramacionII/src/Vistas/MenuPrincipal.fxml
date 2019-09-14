@@ -10,7 +10,7 @@
 
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@CSS/DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.ControllerMenuPrincipal">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@CSS/DarkTheme.css"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.ControllerMenuPrincipal">
    <children>
 
       <ImageView fitHeight="524.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
