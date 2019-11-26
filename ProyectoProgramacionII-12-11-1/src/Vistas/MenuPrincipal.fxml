@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@CSS/DarkTheme.css"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.ControllerMenuPrincipal">
+   <children>
+
+      <ImageView fitHeight="524.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagenes/Diseño%20sin%20título.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="155.0" layoutY="32.0" styleClass="label-header" text="Bolsa de Empleo" textAlignment="CENTER">
+         <font>
+            <Font size="42.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Label>
+      <Label layoutX="189.0" layoutY="115.0" onMouseClicked="#Registrarse" prefHeight="39.0" prefWidth="322.0" styleClass="label-b" text="Registro e Inicio de Sesion">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Accordion />
+   </children>
+</AnchorPane>
